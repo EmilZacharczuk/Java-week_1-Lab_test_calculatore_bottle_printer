@@ -21,18 +21,21 @@ public class BottleTest {
     public void canDrink () {
         bottle.drink();
         bottle.drink();
-        assertEquals(70, bottle.drink());
+        assertEquals(80, bottle.volume());
     }
 
     @Test
 
     public void canEmpty() {
-        assertEquals(0, bottle.empty());
+        bottle.empty();
+        assertEquals(0, bottle.volume());
     }
 
     @Test
 
     public void canFillUp() {
-        assertEquals(100, bottle.fillUp());
+        bottle.empty();
+        bottle.fillUp();
+        assertEquals(100, bottle.volume());
     }
 }
