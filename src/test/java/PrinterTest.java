@@ -9,20 +9,45 @@ public class PrinterTest {
 
     @Before
         public void before () {
-        this.printer = new Printer(20);
+        this.printer = new Printer(30, 20);
 
     }
 
     @Test
     public void hasSheetsLimit () {
-        assertEquals(20, printer.sheetsLeft());
+        assertEquals(30, printer.sheetsLeft());
+    }
+
+
+    @Test
+    public void refillPaper() {
+        printer.refillPaper(10);
+        assertEquals(40, printer.sheetsLeft());
     }
 
     @Test
-    public void printsCopies() {
-        assertEquals(10, printer.printsCopies(2,5));
+    public void canPrint() {
+        assertEquals(true, printer.print(2,5));
     }
-
     @Test
-    public void
+    public void cannotPrint() {
+        assertEquals(false, printer.print(21,1));
+    }
+    @Test
+    public void checkTonerLevel() {
+        printer.print(10, 1);
+        assertEquals(10, printer.tonerVolume());
+        printer.print(30,20);
+        assertEquals(10, printer.tonerVolume());
+    }
+    @Test
+    public void tonerLevelDown() {
+        printer.print(10, 2);
+        assertEquals(0, printer.tonerVolume());
+    }
+    @Test
+    public void topUpToner() {
+        printer.refillToner(20);
+        assertEquals(40, printer.tonerVolume());
+    }
 }
