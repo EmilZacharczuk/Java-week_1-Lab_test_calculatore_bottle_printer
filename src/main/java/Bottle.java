@@ -1,19 +1,23 @@
 public class Bottle {
-    private double volume;
+    private int volume;
 
-    public Bottle (double volume) {
-       this.volume = volume;
+    public Bottle(int volume) {
+        this.volume = volume;
     }
 
-    public double volume() {
+    public int volume() {
         return this.volume;
     }
 
-    public double drink() {
-        return this.volume - 10;
+    public int drink() {
+        return this.volume -= 10;
     }
 
-    public double empty() {
-        return this.volume = 0.0;
+    public int empty() {
+        return this.volume = 0;
+    }
+
+    public int fillUp() {
+        return this.volume = 100;
     }
 }
